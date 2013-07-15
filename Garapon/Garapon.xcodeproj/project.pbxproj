@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F935B3117919AE0001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B3017919AE0001FFE01 /* UIKit.framework */; };
+		8F935B3317919AE0001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B3217919AE0001FFE01 /* Foundation.framework */; };
+		8F935B3517919AE0001FFE01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B3417919AE0001FFE01 /* CoreGraphics.framework */; };
+		8F935B3B17919AE0001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B3917919AE0001FFE01 /* InfoPlist.strings */; };
+		8F935B3D17919AE0001FFE01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B3C17919AE0001FFE01 /* main.m */; };
+		8F935B4117919AE0001FFE01 /* WZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B4017919AE0001FFE01 /* WZAppDelegate.m */; };
+		8F935B4317919AE0001FFE01 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B4217919AE0001FFE01 /* Default.png */; };
+		8F935B4517919AE0001FFE01 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B4417919AE0001FFE01 /* Default@2x.png */; };
+		8F935B4717919AE0001FFE01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B4617919AE0001FFE01 /* Default-568h@2x.png */; };
+		8F935B4F17919AE0001FFE01 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B4E17919AE0001FFE01 /* SenTestingKit.framework */; };
+		8F935B5017919AE0001FFE01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B3017919AE0001FFE01 /* UIKit.framework */; };
+		8F935B5117919AE0001FFE01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F935B3217919AE0001FFE01 /* Foundation.framework */; };
+		8F935B5917919AE0001FFE01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F935B5717919AE0001FFE01 /* InfoPlist.strings */; };
+		8F935B5C17919AE0001FFE01 /* GaraponTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B5B17919AE0001FFE01 /* GaraponTests.m */; };
+		8F935B7A17919C75001FFE01 /* WZGaraponError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B6B17919C75001FFE01 /* WZGaraponError.m */; };
+		8F935B7B17919C75001FFE01 /* WZGaraponRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B6D17919C75001FFE01 /* WZGaraponRequest.m */; };
+		8F935B7C17919C75001FFE01 /* WZGaraponTv.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B6F17919C75001FFE01 /* WZGaraponTv.m */; };
+		8F935B7D17919C75001FFE01 /* WZGaraponTvChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B7117919C75001FFE01 /* WZGaraponTvChannel.m */; };
+		8F935B7E17919C75001FFE01 /* WZGaraponTVGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B7317919C75001FFE01 /* WZGaraponTVGenre.m */; };
+		8F935B7F17919C75001FFE01 /* WZGaraponTvProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B7517919C75001FFE01 /* WZGaraponTvProgram.m */; };
+		8F935B8017919C75001FFE01 /* WZGaraponWrapDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B7717919C75001FFE01 /* WZGaraponWrapDictionary.m */; };
+		8F935B851791A4F8001FFE01 /* WZGaraponWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F935B841791A4F7001FFE01 /* WZGaraponWeb.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F935B5217919AE0001FFE01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F935B2517919AE0001FFE01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F935B2C17919AE0001FFE01;
+			remoteInfo = Garapon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F935B2D17919AE0001FFE01 /* Garapon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garapon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F935B3017919AE0001FFE01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8F935B3217919AE0001FFE01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8F935B3417919AE0001FFE01 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8F935B3817919AE0001FFE01 /* Garapon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Garapon-Info.plist"; sourceTree = "<group>"; };
+		8F935B3A17919AE0001FFE01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F935B3C17919AE0001FFE01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F935B3E17919AE0001FFE01 /* Garapon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Garapon-Prefix.pch"; sourceTree = "<group>"; };
+		8F935B3F17919AE0001FFE01 /* WZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZAppDelegate.h; sourceTree = "<group>"; };
+		8F935B4017919AE0001FFE01 /* WZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WZAppDelegate.m; sourceTree = "<group>"; };
+		8F935B4217919AE0001FFE01 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8F935B4417919AE0001FFE01 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8F935B4617919AE0001FFE01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8F935B4D17919AE0001FFE01 /* GaraponTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaraponTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F935B4E17919AE0001FFE01 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		8F935B5617919AE0001FFE01 /* GaraponTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GaraponTests-Info.plist"; sourceTree = "<group>"; };
+		8F935B5817919AE0001FFE01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F935B5A17919AE0001FFE01 /* GaraponTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaraponTests.h; sourceTree = "<group>"; };
+		8F935B5B17919AE0001FFE01 /* GaraponTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaraponTests.m; sourceTree = "<group>"; };
+		8F935B6617919C75001FFE01 /* WZGarapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGarapon.h; path = ../../Classes/WZGarapon.h; sourceTree = "<group>"; };
+		8F935B6A17919C75001FFE01 /* WZGaraponError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponError.h; path = ../../Classes/WZGaraponError.h; sourceTree = "<group>"; };
+		8F935B6B17919C75001FFE01 /* WZGaraponError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponError.m; path = ../../Classes/WZGaraponError.m; sourceTree = "<group>"; };
+		8F935B6C17919C75001FFE01 /* WZGaraponRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponRequest.h; path = ../../Classes/WZGaraponRequest.h; sourceTree = "<group>"; };
+		8F935B6D17919C75001FFE01 /* WZGaraponRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponRequest.m; path = ../../Classes/WZGaraponRequest.m; sourceTree = "<group>"; };
+		8F935B6E17919C75001FFE01 /* WZGaraponTv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponTv.h; path = ../../Classes/WZGaraponTv.h; sourceTree = "<group>"; };
+		8F935B6F17919C75001FFE01 /* WZGaraponTv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponTv.m; path = ../../Classes/WZGaraponTv.m; sourceTree = "<group>"; };
+		8F935B7017919C75001FFE01 /* WZGaraponTvChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponTvChannel.h; path = ../../Classes/WZGaraponTvChannel.h; sourceTree = "<group>"; };
+		8F935B7117919C75001FFE01 /* WZGaraponTvChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponTvChannel.m; path = ../../Classes/WZGaraponTvChannel.m; sourceTree = "<group>"; };
+		8F935B7217919C75001FFE01 /* WZGaraponTVGenre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponTVGenre.h; path = ../../Classes/WZGaraponTVGenre.h; sourceTree = "<group>"; };
+		8F935B7317919C75001FFE01 /* WZGaraponTVGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponTVGenre.m; path = ../../Classes/WZGaraponTVGenre.m; sourceTree = "<group>"; };
+		8F935B7417919C75001FFE01 /* WZGaraponTvProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponTvProgram.h; path = ../../Classes/WZGaraponTvProgram.h; sourceTree = "<group>"; };
+		8F935B7517919C75001FFE01 /* WZGaraponTvProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponTvProgram.m; path = ../../Classes/WZGaraponTvProgram.m; sourceTree = "<group>"; };
+		8F935B7617919C75001FFE01 /* WZGaraponWrapDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponWrapDictionary.h; path = ../../Classes/WZGaraponWrapDictionary.h; sourceTree = "<group>"; };
+		8F935B7717919C75001FFE01 /* WZGaraponWrapDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponWrapDictionary.m; path = ../../Classes/WZGaraponWrapDictionary.m; sourceTree = "<group>"; };
+		8F935B8117919CB7001FFE01 /* GaraponTestDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaraponTestDefines.h; sourceTree = "<group>"; };
+		8F935B821791A430001FFE01 /* WZGaraponGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponGlobal.h; path = ../../Classes/WZGaraponGlobal.h; sourceTree = "<group>"; };
+		8F935B831791A4F7001FFE01 /* WZGaraponWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WZGaraponWeb.h; path = ../../Classes/WZGaraponWeb.h; sourceTree = "<group>"; };
+		8F935B841791A4F7001FFE01 /* WZGaraponWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WZGaraponWeb.m; path = ../../Classes/WZGaraponWeb.m; sourceTree = "<group>"; };
+		8F935B861791A591001FFE01 /* GaraponTestDefines.sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaraponTestDefines.sample.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F935B2A17919AE0001FFE01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F935B3117919AE0001FFE01 /* UIKit.framework in Frameworks */,
+				8F935B3317919AE0001FFE01 /* Foundation.framework in Frameworks */,
+				8F935B3517919AE0001FFE01 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F935B4917919AE0001FFE01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F935B4F17919AE0001FFE01 /* SenTestingKit.framework in Frameworks */,
+				8F935B5017919AE0001FFE01 /* UIKit.framework in Frameworks */,
+				8F935B5117919AE0001FFE01 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F935B2417919AE0001FFE01 = {
+			isa = PBXGroup;
+			children = (
+				8F935B6517919C5E001FFE01 /* Classes */,
+				8F935B3617919AE0001FFE01 /* Garapon */,
+				8F935B5417919AE0001FFE01 /* GaraponTests */,
+				8F935B2F17919AE0001FFE01 /* Frameworks */,
+				8F935B2E17919AE0001FFE01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F935B2E17919AE0001FFE01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B2D17919AE0001FFE01 /* Garapon.app */,
+				8F935B4D17919AE0001FFE01 /* GaraponTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F935B2F17919AE0001FFE01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B3017919AE0001FFE01 /* UIKit.framework */,
+				8F935B3217919AE0001FFE01 /* Foundation.framework */,
+				8F935B3417919AE0001FFE01 /* CoreGraphics.framework */,
+				8F935B4E17919AE0001FFE01 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F935B3617919AE0001FFE01 /* Garapon */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B3F17919AE0001FFE01 /* WZAppDelegate.h */,
+				8F935B4017919AE0001FFE01 /* WZAppDelegate.m */,
+				8F935B3717919AE0001FFE01 /* Supporting Files */,
+			);
+			path = Garapon;
+			sourceTree = "<group>";
+		};
+		8F935B3717919AE0001FFE01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B3817919AE0001FFE01 /* Garapon-Info.plist */,
+				8F935B3917919AE0001FFE01 /* InfoPlist.strings */,
+				8F935B3C17919AE0001FFE01 /* main.m */,
+				8F935B3E17919AE0001FFE01 /* Garapon-Prefix.pch */,
+				8F935B4217919AE0001FFE01 /* Default.png */,
+				8F935B4417919AE0001FFE01 /* Default@2x.png */,
+				8F935B4617919AE0001FFE01 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F935B5417919AE0001FFE01 /* GaraponTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B861791A591001FFE01 /* GaraponTestDefines.sample.h */,
+				8F935B8117919CB7001FFE01 /* GaraponTestDefines.h */,
+				8F935B5A17919AE0001FFE01 /* GaraponTests.h */,
+				8F935B5B17919AE0001FFE01 /* GaraponTests.m */,
+				8F935B5517919AE0001FFE01 /* Supporting Files */,
+			);
+			path = GaraponTests;
+			sourceTree = "<group>";
+		};
+		8F935B5517919AE0001FFE01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B5617919AE0001FFE01 /* GaraponTests-Info.plist */,
+				8F935B5717919AE0001FFE01 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F935B6517919C5E001FFE01 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8F935B821791A430001FFE01 /* WZGaraponGlobal.h */,
+				8F935B6617919C75001FFE01 /* WZGarapon.h */,
+				8F935B6A17919C75001FFE01 /* WZGaraponError.h */,
+				8F935B6B17919C75001FFE01 /* WZGaraponError.m */,
+				8F935B6C17919C75001FFE01 /* WZGaraponRequest.h */,
+				8F935B6D17919C75001FFE01 /* WZGaraponRequest.m */,
+				8F935B6E17919C75001FFE01 /* WZGaraponTv.h */,
+				8F935B6F17919C75001FFE01 /* WZGaraponTv.m */,
+				8F935B7017919C75001FFE01 /* WZGaraponTvChannel.h */,
+				8F935B7117919C75001FFE01 /* WZGaraponTvChannel.m */,
+				8F935B7217919C75001FFE01 /* WZGaraponTVGenre.h */,
+				8F935B7317919C75001FFE01 /* WZGaraponTVGenre.m */,
+				8F935B7417919C75001FFE01 /* WZGaraponTvProgram.h */,
+				8F935B7517919C75001FFE01 /* WZGaraponTvProgram.m */,
+				8F935B7617919C75001FFE01 /* WZGaraponWrapDictionary.h */,
+				8F935B7717919C75001FFE01 /* WZGaraponWrapDictionary.m */,
+				8F935B831791A4F7001FFE01 /* WZGaraponWeb.h */,
+				8F935B841791A4F7001FFE01 /* WZGaraponWeb.m */,
+			);
+			name = Classes;
+			path = Garapon;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F935B2C17919AE0001FFE01 /* Garapon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F935B5F17919AE0001FFE01 /* Build configuration list for PBXNativeTarget "Garapon" */;
+			buildPhases = (
+				8F935B2917919AE0001FFE01 /* Sources */,
+				8F935B2A17919AE0001FFE01 /* Frameworks */,
+				8F935B2B17919AE0001FFE01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Garapon;
+			productName = Garapon;
+			productReference = 8F935B2D17919AE0001FFE01 /* Garapon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F935B4C17919AE0001FFE01 /* GaraponTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F935B6217919AE0001FFE01 /* Build configuration list for PBXNativeTarget "GaraponTests" */;
+			buildPhases = (
+				8F935B4817919AE0001FFE01 /* Sources */,
+				8F935B4917919AE0001FFE01 /* Frameworks */,
+				8F935B4A17919AE0001FFE01 /* Resources */,
+				8F935B4B17919AE0001FFE01 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F935B5317919AE0001FFE01 /* PBXTargetDependency */,
+			);
+			name = GaraponTests;
+			productName = GaraponTests;
+			productReference = 8F935B4D17919AE0001FFE01 /* GaraponTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F935B2517919AE0001FFE01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WZ;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = makoto_kw;
+			};
+			buildConfigurationList = 8F935B2817919AE0001FFE01 /* Build configuration list for PBXProject "Garapon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8F935B2417919AE0001FFE01;
+			productRefGroup = 8F935B2E17919AE0001FFE01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F935B2C17919AE0001FFE01 /* Garapon */,
+				8F935B4C17919AE0001FFE01 /* GaraponTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F935B2B17919AE0001FFE01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F935B3B17919AE0001FFE01 /* InfoPlist.strings in Resources */,
+				8F935B4317919AE0001FFE01 /* Default.png in Resources */,
+				8F935B4517919AE0001FFE01 /* Default@2x.png in Resources */,
+				8F935B4717919AE0001FFE01 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F935B4A17919AE0001FFE01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F935B5917919AE0001FFE01 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8F935B4B17919AE0001FFE01 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F935B2917919AE0001FFE01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F935B3D17919AE0001FFE01 /* main.m in Sources */,
+				8F935B4117919AE0001FFE01 /* WZAppDelegate.m in Sources */,
+				8F935B7A17919C75001FFE01 /* WZGaraponError.m in Sources */,
+				8F935B7B17919C75001FFE01 /* WZGaraponRequest.m in Sources */,
+				8F935B7C17919C75001FFE01 /* WZGaraponTv.m in Sources */,
+				8F935B7D17919C75001FFE01 /* WZGaraponTvChannel.m in Sources */,
+				8F935B7E17919C75001FFE01 /* WZGaraponTVGenre.m in Sources */,
+				8F935B7F17919C75001FFE01 /* WZGaraponTvProgram.m in Sources */,
+				8F935B8017919C75001FFE01 /* WZGaraponWrapDictionary.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F935B4817919AE0001FFE01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F935B5C17919AE0001FFE01 /* GaraponTests.m in Sources */,
+				8F935B851791A4F8001FFE01 /* WZGaraponWeb.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F935B5317919AE0001FFE01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F935B2C17919AE0001FFE01 /* Garapon */;
+			targetProxy = 8F935B5217919AE0001FFE01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8F935B3917919AE0001FFE01 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F935B3A17919AE0001FFE01 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8F935B5717919AE0001FFE01 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F935B5817919AE0001FFE01 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F935B5D17919AE0001FFE01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F935B5E17919AE0001FFE01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F935B6017919AE0001FFE01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Garapon/Garapon-Prefix.pch";
+				INFOPLIST_FILE = "Garapon/Garapon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8F935B6117919AE0001FFE01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Garapon/Garapon-Prefix.pch";
+				INFOPLIST_FILE = "Garapon/Garapon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8F935B6317919AE0001FFE01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Garapon.app/Garapon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Garapon/Garapon-Prefix.pch";
+				INFOPLIST_FILE = "GaraponTests/GaraponTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8F935B6417919AE0001FFE01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Garapon.app/Garapon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Garapon/Garapon-Prefix.pch";
+				INFOPLIST_FILE = "GaraponTests/GaraponTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F935B2817919AE0001FFE01 /* Build configuration list for PBXProject "Garapon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F935B5D17919AE0001FFE01 /* Debug */,
+				8F935B5E17919AE0001FFE01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F935B5F17919AE0001FFE01 /* Build configuration list for PBXNativeTarget "Garapon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F935B6017919AE0001FFE01 /* Debug */,
+				8F935B6117919AE0001FFE01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F935B6217919AE0001FFE01 /* Build configuration list for PBXNativeTarget "GaraponTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F935B6317919AE0001FFE01 /* Debug */,
+				8F935B6417919AE0001FFE01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F935B2517919AE0001FFE01 /* Project object */;
+}
