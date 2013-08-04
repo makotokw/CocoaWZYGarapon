@@ -12,3 +12,19 @@ typedef void (^WZGaraponRequestAsyncBlock)(NSDictionary *response, NSError *erro
 typedef void (^WZGaraponTvProgramBlock)(WZGaraponTvProgram *program);
 
 #define WZ_GARAPON_AUTH_HOST @"garagw.garapon.info"
+
+typedef enum : NSInteger {
+    WZGaraponUnknownApiCategory,
+    WZGaraponWebAuthApiCategory,
+    WZGaraponTvV3ApiCategory,
+} WZGaraponApiCategory;
+
+typedef enum : NSInteger {
+    WZGaraponUnknownApi,
+    WZGaraponAuthApi,
+    WZGaraponAuthLoginApi,
+    WZGaraponAuthLogoutApi,
+    WZGaraponSearchApi,
+    WZGaraponFavoriteApi,
+    WZGaraponChannelApi,
+} WZGaraponApiType;

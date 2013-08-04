@@ -55,7 +55,7 @@
             NSString *errorStatus = response[@"1"];
             if (errorStatus) {
                 error = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponErrorAuthenticationFailed
+                                                          code:WZGaraponAuthenticationFailedError
                                                       userInfo:@{@"description": errorStatus}];
             }
         }        

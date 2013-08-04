@@ -16,6 +16,8 @@
 
 + (NSString *)md5StringWithString:(NSString *)string;
 
+- (id)initWithSessionId:(NSString *)sessionId;
+
 - (void)get:(NSString *)url parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
 - (void)post:(NSString *)url parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
 

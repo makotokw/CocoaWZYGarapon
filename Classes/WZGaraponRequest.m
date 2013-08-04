@@ -81,6 +81,15 @@ static NSURL *URLByAppendingQueryString(NSURL *URL, NSString *queryString)
     return md5(string);
 }
 
+- (id)initWithSessionId:(NSString *)sessionId
+{
+    self = [super init];
+    if (self) {
+        _sessionId = sessionId;
+    }
+    return self;
+}
+
 - (NSString *)sessionQueryString
 {
     NSMutableDictionary *query = [[NSMutableDictionary alloc] init];

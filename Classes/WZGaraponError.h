@@ -7,16 +7,24 @@
 
 #import <Foundation/Foundation.h>
 
+#import "WZGaraponGlobal.h"
+
 #define WZGaraponErrorDomain @"com.makotokw.ios.garapon"
 
-enum {
-    WZGaraponErrorUnknown = 0,
-    WZGaraponErrorAuthenticationRequired = -1,
-    WZGaraponErrorAuthenticationFailed = -2,
-};
+typedef enum : NSInteger  {
+    WZGaraponUnknownError,
+    WZGaraponInvalidParameterError,
+    WZGaraponDatabaseConnectionFailedError,
+    WZGaraponSessionFailedError,
+    WZGaraponSyncAuthenticationRequiredError,
+    WZGaraponAuthenticationRequiredError,
+    WZGaraponAuthenticationFailedError,
+    WZGaraponVideoFileNotFoundError,
+} WZGaraponErrorCode;
+
 
 @interface WZGaraponError : NSError
 
-
+- (id)initWithGaraponTvV3Api:(WZGaraponApiType)apiType status:(NSInteger)status userInfo:(NSDictionary *)dict;
 
 @end

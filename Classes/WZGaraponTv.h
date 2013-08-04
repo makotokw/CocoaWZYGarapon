@@ -18,6 +18,7 @@
 @property NSString *apiVersion;
 @property (readonly) NSString *firmwareVersion;
 @property NSString *devId;
+@property (readonly) NSString *sessionId;
 @property (readonly) BOOL hasSession;
 
 + (id)garaponTvWithAddressResponse:(NSDictionary *)response apiVersion:(NSString *)apiVersionString;

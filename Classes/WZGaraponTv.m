@@ -12,15 +12,20 @@
 #import "WZGaraponTvChannel.h"
 #import "WZGaraponTvProgram.h"
 
+#define WZGaraponTvDefaultApiVersion @"v3"
+
 @implementation WZGaraponTv
 
 {
-    WZGaraponRequest *_httpClient;
+//    WZGaraponRequest *_httpClient;
+    NSString *_devId, *_sessionId;
+    NSString *_loginId, *_password;
 }
 
 @synthesize host = _host, port = _port, apiVersion = _apiVersion;
 @synthesize firmwareVersion = _firmwareVersion;
-@dynamic devId;
+@synthesize devId = _devId;
+@synthesize sessionId = _sessionId;
 @dynamic hasSession;
 
 + (id)garaponTvWithAddressResponse:(NSDictionary *)response apiVersion:(NSString *)apiVersionString
@@ -35,8 +40,8 @@
 {
     self = [super init];
     if (self) {
-        _httpClient = [[WZGaraponRequest alloc] init];
-        _apiVersion = @"v3";
+//        _httpClient = [[WZGaraponRequest alloc] init];
+        _apiVersion = WZGaraponTvDefaultApiVersion;
     }
     return self;
 }
@@ -47,7 +52,7 @@
     if (self) {
         _host = host;
         _port = port;
-        _apiVersion = (apiVersionString) ? apiVersionString : @"v3";
+        _apiVersion = (apiVersionString) ? apiVersionString : WZGaraponTvDefaultApiVersion;
     }
     return self;
 }
@@ -97,19 +102,9 @@
     return [dateFormatter stringFromDate:date];
 }
 
-- (NSString *)devId
-{
-    return _httpClient.devId;
-}
-
-- (void)setDevId:(NSString *)devId
-{
-    _httpClient.devId = devId;
-}
-
 - (BOOL)hasSession
 {
-    return _httpClient.sessionId.length > 0;
+    return _sessionId.length > 0;
 }
 
 - (NSString *)thumbnailURLStringWithId:(NSString *)gtvid
@@ -125,7 +120,7 @@
 
 - (NSString *)httpLiveStreamingURLStringWithId:(NSString *)gtvid
 {
-    NSString *path = [NSString stringWithFormat:@"/cgi-bin/play/m3u8.cgi?%@-%@", gtvid, _httpClient.sessionId];
+    NSString *path = [NSString stringWithFormat:@"/cgi-bin/play/m3u8.cgi?%@-%@", gtvid, _sessionId];
     return [self URLStringWithPath:path];
 }
 
@@ -139,6 +134,13 @@
     [self loginWithLoginId:loginId password:[WZGaraponRequest md5StringWithString:rawPassword] completionHandler:completionHandler];
 }
 
+- (WZGaraponRequest *)request
+{
+    WZGaraponRequest *r = [[WZGaraponRequest alloc] initWithSessionId:_sessionId];
+    r.devId = _devId;
+    return r;
+}
+
 - (void)loginWithLoginId:(NSString *)loginId password:(NSString *)password completionHandler:(WZGaraponAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/auth"];
@@ -146,18 +148,23 @@
                                 @"loginid": loginId,
                                 @"md5pswd": password
                                 };
-    [_httpClient post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
+    
+    __weak WZGaraponRequest *request = [self request];
+    [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
             WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];            
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             NSInteger result = [wrapResponse intgerValueWithKey:@"login" defaultValue:-1];
             if (!(status == 1 && result == 1)) {
-                error = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponErrorAuthenticationFailed
-                                                      userInfo:@{@"status": [NSNumber numberWithInteger:status], @"result":[NSNumber numberWithInteger:result]}];
+                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponAuthLoginApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
             }
             _firmwareVersion = [wrapResponse stringValueWithKey:@"version" defaultValue:nil];
+            
+            // store to re-login
+            _sessionId = request.sessionId;
+            _loginId = loginId;
+            _password = password;
         }
                 
         if (completionHandler) {
@@ -170,15 +177,18 @@
 {
     NSString *URLString = [self apiURLStringWithPath:@"/auth"];
     NSDictionary *parameter = @{@"type": @"logout"};
-    [_httpClient post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
+    
+    WZGaraponRequest *request = [self request];
+    [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
             WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             NSInteger result = [wrapResponse intgerValueWithKey:@"logout" defaultValue:-1];
             if (result != 1) {
-                error = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponErrorAuthenticationFailed
-                                                      userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
+                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponAuthLogoutApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
+            } else {
+                _sessionId = nil;
             }
         }
         
@@ -188,21 +198,50 @@
     }];
 }
 
+- (void)postRequestRetryIfSessionFailedWithURLString:(NSString *)URLString parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+{
+    __weak WZGaraponTv *me = self;
+    WZGaraponRequest *request = [self request];
+    [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
+            if (status == 0) {
+                [me loginWithLoginId:_loginId password:_password completionHandler:^(NSError *loginError) {
+                    if (loginError) {
+                        if (completionHandler) {
+                            completionHandler(response, error);
+                        }
+                    } else {
+                        WZGaraponRequest *request = [self request];
+                        [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response2, NSError *error2) {
+                            if (completionHandler) {
+                                completionHandler(response2, error2);
+                            }
+                        }];
+                    }
+                }];
+                return;
+            }
+        }
+
+        if (completionHandler) {
+            completionHandler(response, error);
+        }
+    }];
+}
+
 - (void)searchWithParameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/search"];
-    [_httpClient post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
-        
+    [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
             WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             if (status != 1) {
-                error = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponErrorAuthenticationFailed
-                                                      userInfo:@{@"status":[NSNumber numberWithInteger:status]}];
+                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponSearchApi status:status userInfo:nil];
             }
-        }
-        
+        }        
         if (completionHandler) {
             completionHandler(response, error);
         }
@@ -212,15 +251,13 @@
 - (void)channelWithCompletionHandler:(WZGaraponRequestAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/channel"];
-    [_httpClient post:URLString parameter:nil completionHandler:^(NSDictionary *response, NSError *error) {
+    [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:nil completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
             WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             if (status != 1) {
-                error = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponErrorAuthenticationFailed
-                                                      userInfo:@{@"status":[NSNumber numberWithInteger:status]}];
+                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponChannelApi status:status userInfo:nil];
             }
         }
         
