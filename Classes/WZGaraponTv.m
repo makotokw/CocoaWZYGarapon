@@ -17,7 +17,6 @@
 @implementation WZGaraponTv
 
 {
-//    WZGaraponRequest *_httpClient;
     NSString *_devId, *_sessionId;
     NSString *_loginId, *_password;
 }
@@ -40,7 +39,6 @@
 {
     self = [super init];
     if (self) {
-//        _httpClient = [[WZGaraponRequest alloc] init];
         _apiVersion = WZGaraponTvDefaultApiVersion;
     }
     return self;
@@ -149,7 +147,7 @@
                                 @"md5pswd": password
                                 };
     
-    __weak WZGaraponRequest *request = [self request];
+    WZGaraponRequest *request = [self request];
     [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
