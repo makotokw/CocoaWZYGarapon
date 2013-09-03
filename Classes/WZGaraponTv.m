@@ -68,6 +68,11 @@
     _port = port;
 }
 
+- (NSURL *)URLWithPath:(NSString *)path
+{
+    return [NSURL URLWithString:[self URLStringWithPath:path]];
+}
+
 - (NSString *)URLStringWithPath:(NSString *)path
 {
     if (_port == 80) {

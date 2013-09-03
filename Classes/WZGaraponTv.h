@@ -28,6 +28,8 @@
 + (NSString *)formatDate:(NSTimeInterval)timestamp;
 + (NSString *)formatDateTime:(NSTimeInterval)timestamp;
 
+- (NSURL *)URLWithPath:(NSString *)path;
+
 - (NSString *)thumbnailURLStringWithId:(NSString *)gtvid;
 - (NSString *)thumbnailURLStringWithProgram:(WZGaraponTvProgram *)program;
 - (NSString *)httpLiveStreamingURLStringWithId:(NSString *)gtvid;
