@@ -40,6 +40,9 @@
 - (void)loginWithLoginId:(NSString *)loginId password:(NSString *)password completionHandler:(WZGaraponAsyncBlock)completionHandler;
 - (void)logoutWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler;
 - (void)searchWithParameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
+- (void)searchWithGtvid:(NSString *)gtvid completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
+- (void)favoriteWithParameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
+- (void)favoriteWithGtvid:(NSString *)gtvid rank:(NSInteger)rank completionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
 - (void)channelWithCompletionHandler:(WZGaraponRequestAsyncBlock)completionHandler;
 
 @end

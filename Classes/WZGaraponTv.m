@@ -264,6 +264,37 @@
     }];
 }
 
+- (void)searchWithGtvid:(NSString *)gtvid completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+{
+    assert(gtvid);
+    NSDictionary *params = @{@"gtvid": gtvid};
+    [self searchWithParameter:params completionHandler:completionHandler];
+}
+
+- (void)favoriteWithParameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+{
+    NSString *URLString = [self apiURLStringWithPath:@"/favorite"];
+    [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
+            if (status != 1) {
+                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponSearchApi status:status userInfo:nil];
+            }
+        }
+        if (completionHandler) {
+            completionHandler(response, error);
+        }
+    }];
+}
+
+- (void)favoriteWithGtvid:(NSString *)gtvid rank:(NSInteger)rank completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+{
+    assert(gtvid);
+    NSDictionary *params = @{@"gtvid": gtvid, @"rank": [NSNumber numberWithInteger:rank]};
+    [self favoriteWithParameter:params completionHandler:completionHandler];
+}
+
 - (void)channelWithCompletionHandler:(WZGaraponRequestAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/channel"];
