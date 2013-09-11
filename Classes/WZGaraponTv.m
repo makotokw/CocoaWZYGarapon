@@ -105,6 +105,19 @@
     return [dateFormatter stringFromDate:date];
 }
 
++ (NSDictionary *)recordingProgramParams
+{
+    NSTimeInterval sdate = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval edate = sdate + 600;
+    return @{
+             @"dt": @"e",
+             @"sort": @"sta",
+             @"sdate": [WZGaraponTv formatDateTime:sdate],
+             @"sdate": [WZGaraponTv formatDateTime:edate],
+             @"video": @"all",
+             };
+}
+
 - (BOOL)hasSession
 {
     return _sessionId.length > 0;

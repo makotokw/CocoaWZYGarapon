@@ -27,6 +27,7 @@
 
 + (NSString *)formatDate:(NSTimeInterval)timestamp;
 + (NSString *)formatDateTime:(NSTimeInterval)timestamp;
++ (NSDictionary *)recordingProgramParams;
 
 - (NSURL *)URLWithPath:(NSString *)path;
 
