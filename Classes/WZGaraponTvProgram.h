@@ -23,6 +23,9 @@
 @property NSString *bcTags;
 @property NSInteger ts;
 
+@property (readonly) NSURL *socialURL;
+
 + (NSArray *)arrayWithSearchResponse:(NSDictionary *)response;
+- (void)mergeFrom:(WZGaraponTvProgram *)source;
 
 @end
