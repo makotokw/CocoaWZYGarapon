@@ -21,8 +21,8 @@
     NSString *_loginId, *_password;
 }
 
-@synthesize host = _host, port = _port, apiVersion = _apiVersion;
-@synthesize firmwareVersion = _firmwareVersion;
+@synthesize host = _host, port = _port, port2 = _port2, apiVersion = _apiVersion;
+@synthesize gtvVersion = _gtvVersion, firmwareVersion = _firmwareVersion;
 @synthesize devId = _devId;
 @synthesize sessionId = _sessionId;
 @dynamic hasSession;
@@ -66,6 +66,11 @@
     
     _host = host;
     _port = port;
+    _port2 = [wrap intgerValueWithKey:@"port2" defaultValue:51935];
+    _gtvVersion = [wrap stringValueWithKey:@"gtvver" defaultValue:nil];
+
+    // remove GTV (GTV3.0 -> 3.0)
+    _gtvVersion = [_gtvVersion stringByReplacingOccurrencesOfString:@"GTV" withString:@""];
 }
 
 - (NSURL *)URLWithPath:(NSString *)path

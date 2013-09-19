@@ -15,6 +15,8 @@
 
 @property NSString *host;
 @property NSInteger port;
+@property NSInteger port2;
+@property NSString *gtvVersion;
 @property NSString *apiVersion;
 @property (readonly) NSString *firmwareVersion;
 @property NSString *devId;

@@ -25,6 +25,9 @@
 
 @property (readonly) NSURL *socialURL;
 
+// proxy state when its properties are not fully loaded
+@property BOOL isProxy;
+
 + (NSArray *)arrayWithSearchResponse:(NSDictionary *)response;
 - (void)mergeFrom:(WZGaraponTvProgram *)source;
 
