@@ -22,6 +22,7 @@
 }
 
 @synthesize host = _host, port = _port, port2 = _port2, apiVersion = _apiVersion;
+@synthesize globalIPAddress = _globalIPAddress, privateIPAddress = _privateIPAddress, globalPort = _globalPort;
 @synthesize gtvVersion = _gtvVersion, firmwareVersion = _firmwareVersion;
 @synthesize devId = _devId;
 @synthesize sessionId = _sessionId;
@@ -60,9 +61,11 @@
     WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
     
     NSString *host = [wrap stringValueWithKey:@"ipaddr" defaultValue:nil];
-    NSString *globalAddress = [wrap stringValueWithKey:@"gipaddr" defaultValue:nil];
-    NSInteger globalPort = [wrap intgerValueWithKey:@"port" defaultValue:80];
-    NSInteger port = [host isEqualToString:globalAddress] ? globalPort : 80;
+    _privateIPAddress = [wrap stringValueWithKey:@"pipaddr" defaultValue:nil];
+    _globalIPAddress = [wrap stringValueWithKey:@"gipaddr" defaultValue:nil];
+    _globalPort = [wrap intgerValueWithKey:@"port" defaultValue:80];
+    
+    NSInteger port = [host isEqualToString:_globalIPAddress] ? _globalPort : 80;
     
     _host = host;
     _port = port;
@@ -71,6 +74,19 @@
 
     // remove GTV (GTV3.0 -> 3.0)
     _gtvVersion = [_gtvVersion stringByReplacingOccurrencesOfString:@"GTV" withString:@""];
+}
+
+- (void)setAlternateHostAndrPort
+{
+    if (_globalIPAddress && _privateIPAddress) {
+        if ([_host isEqualToString:_globalIPAddress]) {
+            _host = _privateIPAddress;
+            _port = 80;
+        } else {
+            _host = _globalIPAddress;
+            _port = _globalPort;
+        }
+    }
 }
 
 - (NSURL *)URLWithPath:(NSString *)path

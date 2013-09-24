@@ -16,6 +16,9 @@
 @property NSString *host;
 @property NSInteger port;
 @property NSInteger port2;
+@property NSString *globalIPAddress;
+@property NSString *privateIPAddress;
+@property NSInteger globalPort;
 @property NSString *gtvVersion;
 @property NSString *apiVersion;
 @property (readonly) NSString *firmwareVersion;
@@ -26,6 +29,7 @@
 + (id)garaponTvWithAddressResponse:(NSDictionary *)response apiVersion:(NSString *)apiVersionString;
 - (id)initWithHost:(NSString *)host port:(NSInteger)port apiVersion:(NSString *)apiVersionString;
 - (void)setHostAndPortWithAddressResponse:(NSDictionary *)response;
+- (void)setAlternateHostAndrPort;
 
 + (NSString *)formatDate:(NSTimeInterval)timestamp;
 + (NSString *)formatDateTime:(NSTimeInterval)timestamp;
