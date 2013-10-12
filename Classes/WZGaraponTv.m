@@ -113,7 +113,8 @@
 + (NSString *)formatDate:(NSTimeInterval)timestamp
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
     return [dateFormatter stringFromDate:date];
 }
@@ -121,7 +122,8 @@
 + (NSString *)formatDateTime:(NSTimeInterval)timestamp
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
     return [dateFormatter stringFromDate:date];
 }

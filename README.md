@@ -1,7 +1,7 @@
 WZGarapon
 ========
 
-[ガラポンTV](http://garapon.tv/)のAPIのラッパーライブラリです。
+iOS向けの[ガラポンTV](http://garapon.tv/) APIのラッパーライブラリです。
 
 ## 利用規約について
 
