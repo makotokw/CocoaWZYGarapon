@@ -72,7 +72,7 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
         p.genres = dict[@"genre"];
         p.favorite = [wrap intgerValueWithKey:@"favorite" defaultValue:0];
         p.captionHit = [wrap intgerValueWithKey:@"caption_hit" defaultValue:0];
-        p.caption = dict[@"genre"];
+        p.caption = dict[@"caption"];
         p.bc = [wrap stringValueWithKey:@"bc" defaultValue:nil];
         p.bcTags = [wrap stringValueWithKey:@"bc_tags" defaultValue:nil];
         p.ts = [wrap intgerValueWithKey:@"ts" defaultValue:0];
