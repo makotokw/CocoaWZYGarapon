@@ -133,9 +133,9 @@ static NSURL *URLByAppendingQueryString(NSURL *URL, NSString *queryString)
         URL = URLByAppendingQueryString(URL, [self sessionQueryString]);
     }
     
-    [request setURL:URL];
-    [request setHTTPMethod:method];
-    [request setHTTPShouldHandleCookies:YES];
+    request.URL = URL;
+    request.HTTPMethod = method;
+    request.HTTPShouldHandleCookies = YES;
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -150,8 +150,7 @@ static NSURL *URLByAppendingQueryString(NSURL *URL, NSString *queryString)
                                
                                NSDictionary *result = nil;
                                
-                               if ([URL.host isEqualToString:WZ_GARAPON_AUTH_HOST]) {
-                                   
+                               if ([URL.host isEqualToString:WZ_GARAPON_AUTH_HOST]) { // GaraponWeb API
                                    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
                                    NSString *string = [NSString stringWithUTF8String:data.bytes];
                                    
@@ -172,18 +171,18 @@ static NSURL *URLByAppendingQueryString(NSURL *URL, NSString *queryString)
                                        lineEnd = currentRange.location + currentRange.length;
                                    }                                   
                                    result = dict;
-                               } else {
+                               } else { // GaraponTV API
                                    NSError *parseError = nil;
                                    result = [NSJSONSerialization JSONObjectWithData:data
-                                                                                          options:0
-                                                                                            error:&parseError];
-                                   
+                                                                            options:0
+                                                                              error:&parseError];
                                    if (parseError) {
                                        if (completionHandler) {
                                            completionHandler(result, parseError);
                                        }
                                        return;
-                                   }
+                                   }                                   
+                                   
                                    NSRange range = [URL.path rangeOfString:@"/auth"];
                                    if (range.location != NSNotFound) {
                                        _sessionId = nil;
