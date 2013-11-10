@@ -26,5 +26,6 @@ typedef enum : NSInteger  {
 @interface WZGaraponError : NSError
 
 - (id)initWithGaraponTvV3Api:(WZGaraponApiType)apiType status:(NSInteger)status userInfo:(NSDictionary *)dict;
+- (void)setGaraponWebErrorStatus:(NSString *)status;
 
 @end

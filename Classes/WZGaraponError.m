@@ -124,4 +124,12 @@
     return [super localizedRecoverySuggestion];
 }
 
+- (void)setGaraponWebErrorStatus:(NSString *)status
+{
+    _garaponDescription = NSLocalizedStringFromTable(status, @"WZGaraponWebAuth", nil);
+    if ([status isEqualToString:@"no response"]) {        
+        _garaponRecoverySuggestion = NSLocalizedStringFromTable(@"recovery for no response", @"WZGaraponWebAuth", nil);
+    }
+}
+
 @end

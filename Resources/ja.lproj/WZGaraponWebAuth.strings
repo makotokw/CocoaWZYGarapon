@@ -1,0 +1,10 @@
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+
+"wrong password" = "ガラポンIDとパスワードが一致しません。";
+"unknown user" = "ガラポンIDが見つかりません。";
+"unknown registkey" = "ガラポンIDにガラポンTV端末が紐付いていません。";
+"unknown ip address" = "ガラポンTV端末のIPアドレスが不明です。";
+"unknown developer" = "不明な開発者IDからのリクエストです。";
+
+"no response" = "ガラポンWeb認証からデータを取得できませんでした。";
+"recovery for no response" = "再度実行するとうまくいくことがあります。";

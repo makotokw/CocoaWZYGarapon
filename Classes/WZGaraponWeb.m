@@ -50,15 +50,22 @@
                                 };
     
     [_httpClient post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
-        
         if (!error) {
+            NSString *status = response[@"0"];
             NSString *errorStatus = response[@"1"];
-            if (errorStatus) {
-                error = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponAuthenticationFailedError
-                                                      userInfo:@{@"description": errorStatus}];
+            
+            // no response but http status 200?
+            if (!status && !errorStatus) {
+                errorStatus = @"no response";
             }
-        }        
+            if (errorStatus) {
+                WZGaraponError *garaponError = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
+                                                          code:WZGaraponAuthenticationFailedError
+                                                      userInfo:nil];
+                [garaponError setGaraponWebErrorStatus:errorStatus];
+                error = garaponError;
+            }
+        }
         if (completionHandler) {
             completionHandler(response, error);
         }
