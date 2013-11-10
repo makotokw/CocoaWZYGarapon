@@ -11,6 +11,7 @@
 
 @property NSString *gtvid;
 @property NSDate *startdate;
+@property (readonly) NSDate *enddate;
 @property NSTimeInterval duration;
 @property NSInteger ch;
 @property NSString *title;
@@ -29,6 +30,8 @@
 @property BOOL isProxy;
 
 + (NSArray *)arrayWithSearchResponse:(NSDictionary *)response;
++ (NSURL *)socialURLWithGtvid:(NSString *)gtvid;
+
 - (void)mergeFrom:(WZGaraponTvProgram *)source;
 
 @end

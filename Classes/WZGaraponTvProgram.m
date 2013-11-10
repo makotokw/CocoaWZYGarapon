@@ -12,6 +12,7 @@
 
 @synthesize gtvid = _gtvid, startdate = _startdate, duration = _duration, ch = _ch, title = _title, descriptionText = _descriptionText, genres = _genres, favorite = _favorite, captionHit = _captionHit, caption = _caption, bc = _bc, bcTags = _bcTags, ts = _ts;
 
+@dynamic enddate;
 @dynamic socialURL;
 
 static NSDate *dateStringToDate(NSString *dateString)
@@ -83,9 +84,19 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
     return programs;
 }
 
+- (NSDate *)enddate
+{
+    return [_startdate dateByAddingTimeInterval:_duration];
+}
+
 - (NSURL *)socialURL
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"http://site.garapon.tv/social_gtvid_view?gtvid=%@", self.gtvid]];
+    return [WZGaraponTvProgram socialURLWithGtvid: self.gtvid];
+}
+
++ (NSURL *)socialURLWithGtvid:(NSString *)gtvid
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://site.garapon.tv/social_gtvid_view?gtvid=%@", gtvid]];
 }
 
 - (void)mergeFrom:(WZGaraponTvProgram *)source

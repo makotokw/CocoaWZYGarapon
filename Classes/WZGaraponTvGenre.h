@@ -11,5 +11,6 @@
 
 + (NSDictionary *)dictionaryForGenre;
 + (NSString *)genreNameWithKey:(id)key;
++ (NSString *)majorGenreNameWithKey:(id)key;
 
 @end

@@ -144,4 +144,14 @@ static NSDictionary *sGaraponTvGenreDict;
     return sGaraponTvGenreDict[key];
 }
 
++ (NSString *)majorGenreNameWithKey:(id)key
+{
+    NSString *genreCode = [key description];
+    NSArray *a = [genreCode componentsSeparatedByString:@"/"];
+    if (a.count >= 2) {
+        genreCode = a[0];
+    }
+    return sGaraponTvGenreDict[genreCode];
+}
+
 @end
