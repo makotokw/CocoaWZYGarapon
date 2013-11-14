@@ -99,6 +99,11 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://site.garapon.tv/social_gtvid_view?gtvid=%@", gtvid]];
 }
 
+- (BOOL)isEqualGtvid:(WZGaraponTvProgram *)program
+{
+    return [self.gtvid isEqualToString:program.gtvid];
+}
+
 - (void)mergeFrom:(WZGaraponTvProgram *)source
 {
     if (![self.gtvid isEqualToString:source.gtvid]) {

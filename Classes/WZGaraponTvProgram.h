@@ -32,6 +32,7 @@
 + (NSArray *)arrayWithSearchResponse:(NSDictionary *)response;
 + (NSURL *)socialURLWithGtvid:(NSString *)gtvid;
 
+- (BOOL)isEqualGtvid:(WZGaraponTvProgram *)program;
 - (void)mergeFrom:(WZGaraponTvProgram *)source;
 
 @end
