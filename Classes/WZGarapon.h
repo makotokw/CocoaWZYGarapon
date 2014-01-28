@@ -13,4 +13,5 @@
 #import "WZGaraponTvProgram.h"
 #import "WZGaraponWeb.h"
 #import "WZGaraponWrapDictionary.h"
+#import "WZGaraponTvSite.h"
 #import "WZGaraponTvSiteActivity.h"
