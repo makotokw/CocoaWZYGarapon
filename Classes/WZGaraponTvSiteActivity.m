@@ -6,6 +6,7 @@
 //
 //
 
+#import "WZGaraponGlobal.h"
 #import "WZGaraponTvSiteActivity.h"
 
 @implementation WZGaraponTvSiteActivity
@@ -22,7 +23,7 @@
 
 - (NSString *)activityTitle
 {
-    return @"ガラポンTVサイト";
+    return WZGaraponLocalizedString(@"GaraponTvActivityTitle");
 }
 
 - (NSURL *)garaponTvSiteURLWithActivityItem:(id)activityItem

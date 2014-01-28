@@ -28,3 +28,5 @@ typedef enum : NSInteger {
     WZGaraponFavoriteApi,
     WZGaraponChannelApi,
 } WZGaraponApiType;
+
+FOUNDATION_EXPORT NSString *WZGaraponLocalizedString(NSString *key);
