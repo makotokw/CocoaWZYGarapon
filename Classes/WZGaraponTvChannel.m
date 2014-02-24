@@ -10,9 +10,20 @@
 
 @implementation WZGaraponTvChannel
 
-@synthesize TSID = _TSID;
-@synthesize name = _name;
-@synthesize hashTag = _hashTag;
+- (id)initWithCoder:(NSCoder *)coder
+{
+    _TSID = [coder decodeIntegerForKey:@"TSID"];
+    _name = [coder decodeObjectForKey:@"name"];
+    _hashTag = [coder decodeObjectForKey:@"hashTag"];
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeInteger:_TSID forKey:@"TSID"];
+    [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_hashTag forKey:@"hashTag"];
+}
 
 + (NSArray *)arrayWithChannelResponse:(NSDictionary *)response
 {
@@ -58,3 +69,4 @@
 }
 
 @end
+
