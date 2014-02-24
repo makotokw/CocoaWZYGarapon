@@ -1,4 +1,4 @@
-WZGarapon
+WZYGarapon
 ========
 
 iOS向けの[ガラポンTV](http://garapon.tv/) APIのラッパーライブラリです。
@@ -12,7 +12,7 @@ iOS向けの[ガラポンTV](http://garapon.tv/) APIのラッパーライブラ�
 CocoaPodsでインストールできます。
 
 ```ruby:Podfile
-pod 'WZGarapon', :git => 'https://github.com/makotokw/CocoaWZGarapon.git'
+pod 'WZYGarapon', :git => 'https://github.com/makotokw/CocoaWZYGarapon.git'
 ```
 
 ## 必要環境

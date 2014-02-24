@@ -1,5 +1,5 @@
 //
-//  WZGaraponDictionary.h
+//  WZYGaraponDictionary.h
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WZGaraponWrapDictionary : NSObject
+@interface WZYGaraponWrapDictionary : NSObject
 
 @property (retain) NSDictionary *dict;
 

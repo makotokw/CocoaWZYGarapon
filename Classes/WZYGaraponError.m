@@ -1,17 +1,17 @@
 //
-//  WZGaraponError.m
+//  WZYGaraponError.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponError.h"
+#import "WZYGaraponError.h"
 
-@implementation WZGaraponError
+@implementation WZYGaraponError
 
 {
-    WZGaraponApiCategory _apiCategory;
-    WZGaraponApiType _apiType;
+    WZYGaraponApiCategory _apiCategory;
+    WZYGaraponApiType _apiType;
     NSInteger _garaponError;
     NSInteger _garaponStatus;
     NSString *_garaponDescription;
@@ -20,32 +20,32 @@
 
 - (id)initWithDomain:(NSString *)domain code:(NSInteger)code userInfo:(NSDictionary *)dict
 {
-    if (self = [super initWithDomain:WZGaraponErrorDomain code:code userInfo:dict]) {
-        _apiCategory = WZGaraponUnknownApiCategory;
-        _apiType = WZGaraponUnknownApi;
+    if (self = [super initWithDomain:WZYGaraponErrorDomain code:code userInfo:dict]) {
+        _apiCategory = WZYGaraponUnknownApiCategory;
+        _apiType = WZYGaraponUnknownApi;
         _garaponError = code;
     }
     return self;
 }
 
-- (id)initWithGaraponTvV3Api:(WZGaraponApiType)apiType status:(NSInteger)status userInfo:(NSDictionary *)dict
+- (id)initWithGaraponTvV3Api:(WZYGaraponApiType)apiType status:(NSInteger)status userInfo:(NSDictionary *)dict
 {
-    if (self = [super initWithDomain:WZGaraponErrorDomain code:status userInfo:dict]) {
-        _apiCategory = WZGaraponTvV3ApiCategory;
+    if (self = [super initWithDomain:WZYGaraponErrorDomain code:status userInfo:dict]) {
+        _apiCategory = WZYGaraponTvV3ApiCategory;
         _apiType = apiType;
-        _garaponError = WZGaraponUnknownError;
+        _garaponError = WZYGaraponUnknownError;
         
         switch (apiType) {                
-            case WZGaraponAuthLoginApi:
-            case WZGaraponAuthLogoutApi:
+            case WZYGaraponAuthLoginApi:
+            case WZYGaraponAuthLogoutApi:
             {
                 switch (status) {
                     case 100:
-                        _garaponError = WZGaraponInvalidParameterError;
+                        _garaponError = WZYGaraponInvalidParameterError;
                         _garaponDescription = @"リクエストパラメータにエラーがありました。";
                         break;
                     case 200:
-                        _garaponError = WZGaraponSyncAuthenticationRequiredError;
+                        _garaponError = WZYGaraponSyncAuthenticationRequiredError;
                         _garaponDescription = @"ガラポン中央サーバとのユーザデータの同期が必要です。";
                         _garaponRecoverySuggestion = @"ガラポンTVをインターネットに接続し時間がたってから再度してください。";
                         break;
@@ -65,25 +65,25 @@
             }
                 break;
                 
-            case WZGaraponSearchApi:
-            case WZGaraponFavoriteApi:
-            case WZGaraponChannelApi:
+            case WZYGaraponSearchApi:
+            case WZYGaraponFavoriteApi:
+            case WZYGaraponChannelApi:
                 switch (status) {
                     case 0:
-                        _garaponError = WZGaraponSessionFailedError;
+                        _garaponError = WZYGaraponSessionFailedError;
                         _garaponDescription = @"ログインセッションが無効になっています。";
                         _garaponRecoverySuggestion = @"ガラポンTVに再ログインしてください。";
                         break;
                     case 100:
-                        _garaponError = WZGaraponInvalidParameterError;
+                        _garaponError = WZYGaraponInvalidParameterError;
                         _garaponDescription = @"リクエストパラメータにエラーがありました。";
                         break;
                     case 150:
-                        _garaponError = WZGaraponVideoFileNotFoundError;
+                        _garaponError = WZYGaraponVideoFileNotFoundError;
                         _garaponDescription = @"録画ファイルがみつかりませんでした。";
                         break;
                     case 200:
-                        _garaponError = WZGaraponDatabaseConnectionFailedError;
+                        _garaponError = WZYGaraponDatabaseConnectionFailedError;
                         _garaponDescription = @"データベース接続にエラーがありました。";
                         break;                        
                 }
@@ -126,9 +126,9 @@
 
 - (void)setGaraponWebErrorStatus:(NSString *)status
 {
-    _garaponDescription = NSLocalizedStringFromTable(status, @"WZGaraponWebAuth", nil);
+    _garaponDescription = NSLocalizedStringFromTable(status, @"WZYGaraponWebAuth", nil);
     if ([status isEqualToString:@"no response"]) {        
-        _garaponRecoverySuggestion = NSLocalizedStringFromTable(@"recovery for no response", @"WZGaraponWebAuth", nil);
+        _garaponRecoverySuggestion = NSLocalizedStringFromTable(@"recovery for no response", @"WZYGaraponWebAuth", nil);
     }
 }
 

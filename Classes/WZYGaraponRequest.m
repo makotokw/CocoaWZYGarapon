@@ -1,5 +1,5 @@
 //
-//  WZGaraponRequest.m
+//  WZYGaraponRequest.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
@@ -7,10 +7,10 @@
 
 #import <CommonCrypto/CommonDigest.h>
 
-#import "WZGaraponGlobal.h"
-#import "WZGaraponRequest.h"
+#import "WZYGaraponGlobal.h"
+#import "WZYGaraponRequest.h"
 
-@implementation WZGaraponRequest
+@implementation WZYGaraponRequest
 
 @synthesize devId = _devId;
 @synthesize sessionId = _sessionId;
@@ -103,17 +103,17 @@ static NSURL *URLByAppendingQueryString(NSURL *URL, NSString *queryString)
     return queryString(query);
 }
 
-- (void)get:(NSString *)url parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)get:(NSString *)url parameter:(NSDictionary *)parameter completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     [self request:url method:@"GET" parameter:parameter completionHandler:completionHandler];
 }
 
-- (void)post:(NSString *)url parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)post:(NSString *)url parameter:(NSDictionary *)parameter completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     [self request:url method:@"POST" parameter:parameter completionHandler:completionHandler];
 }
 
-- (void)request:(NSString *)url method:(NSString *)method parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)request:(NSString *)url method:(NSString *)method parameter:(NSDictionary *)parameter completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];    
     
@@ -150,7 +150,7 @@ static NSURL *URLByAppendingQueryString(NSURL *URL, NSString *queryString)
                                
                                NSDictionary *result = nil;
                                
-                               if ([URL.host isEqualToString:WZ_GARAPON_AUTH_HOST]) { // GaraponWeb API
+                               if ([URL.host isEqualToString:WZY_GARAPON_AUTH_HOST]) { // GaraponWeb API
                                    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
                                    NSString *string = [NSString stringWithUTF8String:data.bytes];
                                    

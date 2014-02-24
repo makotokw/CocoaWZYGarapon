@@ -1,15 +1,15 @@
 //
-//  WZGaraponTvSiteActivity.m
+//  WZYGaraponTvSiteActivity.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 //
 
-#import "WZGaraponGlobal.h"
-#import "WZGaraponTvSiteActivity.h"
+#import "WZYGaraponGlobal.h"
+#import "WZYGaraponTvSiteActivity.h"
 
-@implementation WZGaraponTvSiteActivity
+@implementation WZYGaraponTvSiteActivity
 
 - (NSString *)activityType
 {
@@ -18,12 +18,12 @@
 
 - (UIImage *)activityImage
 {
-    return [UIImage imageNamed:@"WZGaraponResources.bundle/GaraponTvSiteActivity.png"];
+    return [UIImage imageNamed:@"WZYGaraponResources.bundle/GaraponTvSiteActivity.png"];
 }
 
 - (NSString *)activityTitle
 {
-    return WZGaraponLocalizedString(@"GaraponTvActivityTitle");
+    return WZYGaraponLocalizedString(@"GaraponTvActivityTitle");
 }
 
 - (NSURL *)garaponTvSiteURLWithActivityItem:(id)activityItem

@@ -1,14 +1,14 @@
 //
-//  WZGaraponTvChannel.m
+//  WZYGaraponTvChannel.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponTvChannel.h"
-#import "WZGaraponWrapDictionary.h"
+#import "WZYGaraponTvChannel.h"
+#import "WZYGaraponWrapDictionary.h"
 
-@implementation WZGaraponTvChannel
+@implementation WZYGaraponTvChannel
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -38,7 +38,7 @@
     
     NSMutableArray *channels = [[NSMutableArray alloc] init];
     
-    WZGaraponWrapDictionary *wrap = [[WZGaraponWrapDictionary alloc] init];
+    WZYGaraponWrapDictionary *wrap = [[WZYGaraponWrapDictionary alloc] init];
     NSDictionary *chList = value;
     
     for (id key in [chList allKeys]) {
@@ -57,7 +57,7 @@
         
         wrap.dict = channelValue;
         
-        WZGaraponTvChannel *channel = [[WZGaraponTvChannel alloc] init];
+        WZYGaraponTvChannel *channel = [[WZYGaraponTvChannel alloc] init];
         channel.TSID = TSID;
         channel.name = [wrap stringValueWithKey:@"ch_name" defaultValue:nil];
         channel.hashTag = [wrap stringValueWithKey:@"hash_tag" defaultValue:nil];

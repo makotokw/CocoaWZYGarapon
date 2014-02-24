@@ -1,14 +1,14 @@
 //
-//  WZGaraponTvProgram.m
+//  WZYGaraponTvProgram.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponTvProgram.h"
-#import "WZGaraponWrapDictionary.h"
+#import "WZYGaraponTvProgram.h"
+#import "WZYGaraponWrapDictionary.h"
 
-@implementation WZGaraponTvProgram
+@implementation WZYGaraponTvProgram
 
 @synthesize gtvid = _gtvid, startdate = _startdate, duration = _duration, ch = _ch, title = _title, descriptionText = _descriptionText, genres = _genres, favorite = _favorite, captionHit = _captionHit, caption = _caption, bc = _bc, bcTags = _bcTags, ts = _ts;
 
@@ -44,7 +44,7 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
 
 + (NSArray *)arrayWithSearchResponse:(NSDictionary *)response
 {
-    WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
+    WZYGaraponWrapDictionary *wrap = [WZYGaraponWrapDictionary wrapWithDictionary:response];
     NSInteger hit = [wrap intgerValueWithKey:@"hit" defaultValue:0];
     if (hit <= 0) {
         return nil;
@@ -62,7 +62,7 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
     for (NSDictionary *dict in program) {
         wrap.dict = dict;
         
-        WZGaraponTvProgram *p = [[WZGaraponTvProgram alloc] init];
+        WZYGaraponTvProgram *p = [[WZYGaraponTvProgram alloc] init];
         
         p.gtvid = [wrap stringValueWithKey:@"gtvid" defaultValue:nil];
         p.startdate = dateStringToDate([wrap stringValueWithKey:@"startdate" defaultValue:nil]);
@@ -91,7 +91,7 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
 
 - (NSURL *)socialURL
 {
-    return [WZGaraponTvProgram socialURLWithGtvid: self.gtvid];
+    return [WZYGaraponTvProgram socialURLWithGtvid: self.gtvid];
 }
 
 + (NSURL *)socialURLWithGtvid:(NSString *)gtvid
@@ -99,12 +99,12 @@ static NSTimeInterval durationStringToTimeInterval(NSString *durationString)
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://site.garapon.tv/social_gtvid_view?gtvid=%@", gtvid]];
 }
 
-- (BOOL)isEqualGtvid:(WZGaraponTvProgram *)program
+- (BOOL)isEqualGtvid:(WZYGaraponTvProgram *)program
 {
     return [self.gtvid isEqualToString:program.gtvid];
 }
 
-- (void)mergeFrom:(WZGaraponTvProgram *)source
+- (void)mergeFrom:(WZYGaraponTvProgram *)source
 {
     if (![self.gtvid isEqualToString:source.gtvid]) {
         return;

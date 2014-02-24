@@ -1,18 +1,18 @@
 //
-//  WZGaraponWeb.m
+//  WZYGaraponWeb.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponWeb.h"
-#import "WZGaraponError.h"
-#import "WZGaraponRequest.h"
+#import "WZYGaraponWeb.h"
+#import "WZYGaraponError.h"
+#import "WZYGaraponRequest.h"
 
-@implementation WZGaraponWeb
+@implementation WZYGaraponWeb
 
 {
-    WZGaraponRequest *_httpClient;
+    WZYGaraponRequest *_httpClient;
 }
 
 @dynamic devId;
@@ -21,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        _httpClient = [[WZGaraponRequest alloc] init];
+        _httpClient = [[WZYGaraponRequest alloc] init];
     }
     return self;
 }
@@ -36,14 +36,14 @@
     _httpClient.devId = devId;
 }
 
-- (void)getGaraponTvAddressWithUserId:(NSString *)userId rawPassword:(NSString *)rawPassword completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)getGaraponTvAddressWithUserId:(NSString *)userId rawPassword:(NSString *)rawPassword completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
-    [self getGaraponTvAddressWithUserId:userId md5passwd:[WZGaraponRequest md5StringWithString:rawPassword] completionHandler:completionHandler];
+    [self getGaraponTvAddressWithUserId:userId md5passwd:[WZYGaraponRequest md5StringWithString:rawPassword] completionHandler:completionHandler];
 }
 
-- (void)getGaraponTvAddressWithUserId:(NSString *)userId md5passwd:(NSString *)md5passwd completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)getGaraponTvAddressWithUserId:(NSString *)userId md5passwd:(NSString *)md5passwd completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
-    NSString *URLString = [NSString stringWithFormat:@"%@://%@%@", @"http", WZ_GARAPON_AUTH_HOST, @"/getgtvaddress" ];
+    NSString *URLString = [NSString stringWithFormat:@"%@://%@%@", @"http", WZY_GARAPON_AUTH_HOST, @"/getgtvaddress" ];
     NSDictionary *parameter = @{@"user": userId,
                                 @"md5passwd": md5passwd,
                                 @"dev_id": _httpClient.devId
@@ -59,8 +59,8 @@
                 errorStatus = @"no response";
             }
             if (errorStatus) {
-                WZGaraponError *garaponError = [[WZGaraponError alloc] initWithDomain:WZGaraponErrorDomain
-                                                          code:WZGaraponAuthenticationFailedError
+                WZYGaraponError *garaponError = [[WZYGaraponError alloc] initWithDomain:WZYGaraponErrorDomain
+                                                          code:WZYGaraponAuthenticationFailedError
                                                       userInfo:nil];
                 [garaponError setGaraponWebErrorStatus:errorStatus];
                 error = garaponError;

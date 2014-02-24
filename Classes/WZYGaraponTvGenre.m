@@ -1,13 +1,13 @@
 //
-//  WZGaraponTvGenre.m
+//  WZYGaraponTvGenre.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponTvGenre.h"
+#import "WZYGaraponTvGenre.h"
 
-@implementation WZGaraponTvGenre
+@implementation WZYGaraponTvGenre
 
 static NSDictionary *sGaraponTvGenreDict;
 

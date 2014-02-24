@@ -1,20 +1,20 @@
 //
-//  WZGaraponTv.m
+//  WZYGaraponTv.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponError.h"
-#import "WZGaraponWrapDictionary.h"
-#import "WZGaraponRequest.h"
-#import "WZGaraponTv.h"
-#import "WZGaraponTvChannel.h"
-#import "WZGaraponTvProgram.h"
+#import "WZYGaraponError.h"
+#import "WZYGaraponWrapDictionary.h"
+#import "WZYGaraponRequest.h"
+#import "WZYGaraponTv.h"
+#import "WZYGaraponTvChannel.h"
+#import "WZYGaraponTvProgram.h"
 
-#define WZGaraponTvDefaultApiVersion @"v3"
+#define WZYGaraponTvDefaultApiVersion @"v3"
 
-@implementation WZGaraponTv
+@implementation WZYGaraponTv
 
 {
     NSString *_devId, *_sessionId;
@@ -30,7 +30,7 @@
 
 + (id)garaponTvWithAddressResponse:(NSDictionary *)response apiVersion:(NSString *)apiVersionString
 {
-    WZGaraponTv *tv = [[WZGaraponTv alloc] init];
+    WZYGaraponTv *tv = [[WZYGaraponTv alloc] init];
     tv.apiVersion = apiVersionString;
     [tv setHostAndPortWithAddressResponse:response];
     return tv;
@@ -40,7 +40,7 @@
 {
     self = [super init];
     if (self) {
-        _apiVersion = WZGaraponTvDefaultApiVersion;
+        _apiVersion = WZYGaraponTvDefaultApiVersion;
     }
     return self;
 }
@@ -51,14 +51,14 @@
     if (self) {
         _host = host;
         _port = port;
-        _apiVersion = (apiVersionString) ? apiVersionString : WZGaraponTvDefaultApiVersion;
+        _apiVersion = (apiVersionString) ? apiVersionString : WZYGaraponTvDefaultApiVersion;
     }
     return self;
 }
 
 - (void)setHostAndPortWithAddressResponse:(NSDictionary *)response
 {
-    WZGaraponWrapDictionary *wrap = [WZGaraponWrapDictionary wrapWithDictionary:response];
+    WZYGaraponWrapDictionary *wrap = [WZYGaraponWrapDictionary wrapWithDictionary:response];
     
     NSString *host = [wrap stringValueWithKey:@"ipaddr" defaultValue:nil];
     _privateIPAddress = [wrap stringValueWithKey:@"pipaddr" defaultValue:nil];
@@ -135,8 +135,8 @@
     return @{
              @"dt": @"e",
              @"sort": @"sta",
-             @"sdate": [WZGaraponTv formatDateTime:sdate],
-             @"sdate": [WZGaraponTv formatDateTime:edate],
+             @"sdate": [WZYGaraponTv formatDateTime:sdate],
+             @"sdate": [WZYGaraponTv formatDateTime:edate],
              @"video": @"all",
              };
 }
@@ -152,7 +152,7 @@
     return [self URLStringWithPath:path];
 }
 
-- (NSString *)thumbnailURLStringWithProgram:(WZGaraponTvProgram *)program
+- (NSString *)thumbnailURLStringWithProgram:(WZYGaraponTvProgram *)program
 {
     return [self thumbnailURLStringWithId:program.gtvid];
 }
@@ -163,24 +163,24 @@
     return [self URLStringWithPath:path];
 }
 
-- (NSString *)httpLiveStreamingURLStringWithProgram:(WZGaraponTvProgram *)program
+- (NSString *)httpLiveStreamingURLStringWithProgram:(WZYGaraponTvProgram *)program
 {
     return [self httpLiveStreamingURLStringWithId:program.gtvid];
 }
 
-- (void)loginWithLoginId:(NSString *)loginId rawPassword:(NSString *)rawPassword completionHandler:(WZGaraponAsyncBlock)completionHandler
+- (void)loginWithLoginId:(NSString *)loginId rawPassword:(NSString *)rawPassword completionHandler:(WZYGaraponAsyncBlock)completionHandler
 {
-    [self loginWithLoginId:loginId password:[WZGaraponRequest md5StringWithString:rawPassword] completionHandler:completionHandler];
+    [self loginWithLoginId:loginId password:[WZYGaraponRequest md5StringWithString:rawPassword] completionHandler:completionHandler];
 }
 
-- (WZGaraponRequest *)request
+- (WZYGaraponRequest *)request
 {
-    WZGaraponRequest *r = [[WZGaraponRequest alloc] initWithSessionId:_sessionId];
+    WZYGaraponRequest *r = [[WZYGaraponRequest alloc] initWithSessionId:_sessionId];
     r.devId = _devId;
     return r;
 }
 
-- (void)loginWithLoginId:(NSString *)loginId password:(NSString *)password completionHandler:(WZGaraponAsyncBlock)completionHandler
+- (void)loginWithLoginId:(NSString *)loginId password:(NSString *)password completionHandler:(WZYGaraponAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/auth"];
     NSDictionary *parameter = @{@"type": @"login",
@@ -188,15 +188,15 @@
                                 @"md5pswd": password
                                 };
     
-    WZGaraponRequest *request = [self request];
+    WZYGaraponRequest *request = [self request];
     [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
-            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];            
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];            
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             NSInteger result = [wrapResponse intgerValueWithKey:@"login" defaultValue:-1];
             if (!(status == 1 && result == 1)) {
-                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponAuthLoginApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
+                error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponAuthLoginApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
             }
             _firmwareVersion = [wrapResponse stringValueWithKey:@"version" defaultValue:nil];
             
@@ -212,20 +212,20 @@
     }];
 }
 
-- (void)logoutWithCompletionHandler:(WZGaraponAsyncBlock)completionHandler
+- (void)logoutWithCompletionHandler:(WZYGaraponAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/auth"];
     NSDictionary *parameter = @{@"type": @"logout"};
     
-    WZGaraponRequest *request = [self request];
+    WZYGaraponRequest *request = [self request];
     [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
-            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             NSInteger result = [wrapResponse intgerValueWithKey:@"logout" defaultValue:-1];
             if (result != 1) {
-                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponAuthLogoutApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
+                error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponAuthLogoutApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
             } else {
                 _sessionId = nil;
             }
@@ -237,13 +237,13 @@
     }];
 }
 
-- (void)postRequestRetryIfSessionFailedWithURLString:(NSString *)URLString parameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)postRequestRetryIfSessionFailedWithURLString:(NSString *)URLString parameter:(NSDictionary *)parameter completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
-    __weak WZGaraponTv *me = self;
-    WZGaraponRequest *request = [self request];
+    __weak WZYGaraponTv *me = self;
+    WZYGaraponRequest *request = [self request];
     [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
-            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             if (status == 0) {
                 [me loginWithLoginId:_loginId password:_password completionHandler:^(NSError *loginError) {
@@ -252,7 +252,7 @@
                             completionHandler(response, error);
                         }
                     } else {
-                        WZGaraponRequest *request = [self request];
+                        WZYGaraponRequest *request = [self request];
                         [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response2, NSError *error2) {
                             if (completionHandler) {
                                 completionHandler(response2, error2);
@@ -270,15 +270,15 @@
     }];
 }
 
-- (void)searchWithParameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)searchWithParameter:(NSDictionary *)parameter completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/search"];
     [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
-            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             if (status != 1) {
-                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponSearchApi status:status userInfo:nil];
+                error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponSearchApi status:status userInfo:nil];
             }
         }        
         if (completionHandler) {
@@ -287,22 +287,22 @@
     }];
 }
 
-- (void)searchWithGtvid:(NSString *)gtvid completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)searchWithGtvid:(NSString *)gtvid completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     assert(gtvid);
     NSDictionary *params = @{@"gtvid": gtvid};
     [self searchWithParameter:params completionHandler:completionHandler];
 }
 
-- (void)favoriteWithParameter:(NSDictionary *)parameter completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)favoriteWithParameter:(NSDictionary *)parameter completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/favorite"];
     [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
         if (!error) {
-            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             if (status != 1) {
-                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponSearchApi status:status userInfo:nil];
+                error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponSearchApi status:status userInfo:nil];
             }
         }
         if (completionHandler) {
@@ -311,23 +311,23 @@
     }];
 }
 
-- (void)favoriteWithGtvid:(NSString *)gtvid rank:(NSInteger)rank completionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)favoriteWithGtvid:(NSString *)gtvid rank:(NSInteger)rank completionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     assert(gtvid);
     NSDictionary *params = @{@"gtvid": gtvid, @"rank": [NSNumber numberWithInteger:rank]};
     [self favoriteWithParameter:params completionHandler:completionHandler];
 }
 
-- (void)channelWithCompletionHandler:(WZGaraponRequestAsyncBlock)completionHandler
+- (void)channelWithCompletionHandler:(WZYGaraponRequestAsyncBlock)completionHandler
 {
     NSString *URLString = [self apiURLStringWithPath:@"/channel"];
     [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:nil completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
-            WZGaraponWrapDictionary *wrapResponse = [WZGaraponWrapDictionary wrapWithDictionary:response];
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             if (status != 1) {
-                error = [[WZGaraponError alloc] initWithGaraponTvV3Api:WZGaraponChannelApi status:status userInfo:nil];
+                error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponChannelApi status:status userInfo:nil];
             }
         }
         

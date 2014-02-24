@@ -1,18 +1,18 @@
 //
-//  WZGaraponTvSite.h
-//  WZGarapon
+//  WZYGaraponTvSite.h
+//  WZYGarapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-typedef void (^WZGaraponTvSiteCompletionHandler)(NSString *gtvid, NSString *originalGtvid);
+typedef void (^WZYGaraponTvSiteCompletionHandler)(NSString *gtvid, NSString *originalGtvid);
 
-@interface WZGaraponTvSite : NSObject
+@interface WZYGaraponTvSite : NSObject
 
 @property (nonatomic, readonly) UIWebView *webView;
-@property (nonatomic, copy) WZGaraponTvSiteCompletionHandler completionHandler;
+@property (nonatomic, copy) WZYGaraponTvSiteCompletionHandler completionHandler;
 
 - (void)prepareGaraponTvSite:(NSDictionary *)dict;
 - (void)setGaraponId:(NSString *)garaponId password:(NSString *)password;

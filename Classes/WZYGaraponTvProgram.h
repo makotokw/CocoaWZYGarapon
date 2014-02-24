@@ -1,5 +1,5 @@
 //
-//  WZGaraponTvProgram.h
+//  WZYGaraponTvProgram.h
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WZGaraponTvProgram : NSObject
+@interface WZYGaraponTvProgram : NSObject
 
 @property NSString *gtvid;
 @property NSDate *startdate;
@@ -32,7 +32,7 @@
 + (NSArray *)arrayWithSearchResponse:(NSDictionary *)response;
 + (NSURL *)socialURLWithGtvid:(NSString *)gtvid;
 
-- (BOOL)isEqualGtvid:(WZGaraponTvProgram *)program;
-- (void)mergeFrom:(WZGaraponTvProgram *)source;
+- (BOOL)isEqualGtvid:(WZYGaraponTvProgram *)program;
+- (void)mergeFrom:(WZYGaraponTvProgram *)source;
 
 @end

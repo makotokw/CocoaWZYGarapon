@@ -1,16 +1,16 @@
 //
-//  WZGaraponTvSite.m
-//  WZGarapon
+//  WZYGaraponTvSite.m
+//  WZYGarapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponTvSite.h"
+#import "WZYGaraponTvSite.h"
 
-@interface WZGaraponTvSite (WebView) <UIWebViewDelegate>
+@interface WZYGaraponTvSite (WebView) <UIWebViewDelegate>
 @end
 
-@implementation WZGaraponTvSite
+@implementation WZYGaraponTvSite
 
 {
     NSString *_garaponId;
@@ -192,5 +192,5 @@
 @end
 
 
-@implementation WZGaraponTvSite (WebView)
+@implementation WZYGaraponTvSite (WebView)
 @end

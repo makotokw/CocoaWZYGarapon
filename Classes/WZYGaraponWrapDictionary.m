@@ -1,19 +1,19 @@
 //
-//  WZGaraponWrapDictionary.m
+//  WZYGaraponWrapDictionary.m
 //  Garapon
 //
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
-#import "WZGaraponWrapDictionary.h"
+#import "WZYGaraponWrapDictionary.h"
 
-@implementation WZGaraponWrapDictionary
+@implementation WZYGaraponWrapDictionary
 
 @synthesize dict = _dict;
 
 + (id)wrapWithDictionary:(NSDictionary *)otherDictionary
 {
-    return [[WZGaraponWrapDictionary alloc] initWithDictionary:otherDictionary];
+    return [[WZYGaraponWrapDictionary alloc] initWithDictionary:otherDictionary];
 }
 
 - (id)initWithDictionary:(NSDictionary *)otherDictionary
