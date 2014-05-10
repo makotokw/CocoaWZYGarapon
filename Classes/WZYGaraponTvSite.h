@@ -14,7 +14,7 @@ typedef void (^WZYGaraponTvSiteCompletionHandler)(NSString *gtvid, NSString *ori
 @property (nonatomic, readonly) UIWebView *webView;
 @property (nonatomic, copy) WZYGaraponTvSiteCompletionHandler completionHandler;
 
-- (void)prepareGaraponTvSite:(NSDictionary *)dict;
+- (void)configure:(NSDictionary *)dict;
 - (void)setGaraponId:(NSString *)garaponId password:(NSString *)password;
 - (void)queryGtvid:(NSString *)gtvid;
 

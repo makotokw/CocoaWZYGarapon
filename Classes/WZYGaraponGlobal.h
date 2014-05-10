@@ -7,6 +7,13 @@
 
 @class WZYGaraponTvProgram;
 
+#define WZYGaraponLog(...) NSLog(__VA_ARGS__)
+#if WZY_GARAPON_DEBUG
+#define WZYGaraponLogD(...) NSLog(__VA_ARGS__)
+#else
+#define WZYGaraponLogD(...) ;
+#endif
+
 typedef void (^WZYGaraponAsyncBlock)(NSError *error);
 typedef void (^WZYGaraponRequestAsyncBlock)(NSDictionary *response, NSError *error);
 typedef void (^WZYGaraponTvProgramBlock)(WZYGaraponTvProgram *program);

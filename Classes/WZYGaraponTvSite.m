@@ -5,9 +5,10 @@
 //  Copyright (c) 2013 makoto_kw. All rights reserved.
 //
 
+#import "WZYGaraponGlobal.h"
 #import "WZYGaraponTvSite.h"
 
-@interface WZYGaraponTvSite (WebView) <UIWebViewDelegate>
+@interface WZYGaraponTvSite () <UIWebViewDelegate>
 @end
 
 @implementation WZYGaraponTvSite
@@ -49,7 +50,7 @@
     _password = password;
 }
 
-- (void)prepareGaraponTvSite:(NSDictionary *)dict
+- (void)configure:(NSDictionary *)dict
 {
     _socialGtvidViewURLString = dict[@"socialGtvidViewUrl"];
     _gtvidSelector = dict[@"gtvidSelector"];
@@ -65,7 +66,7 @@
 
 - (void)login
 {
-    NSLog(@"loginWithGaraponId: %@", _garaponId);
+    WZYGaraponLogD(@"loginWithGaraponId: %@", _garaponId);
 //    NSString *postData = [NSString stringWithFormat:@"gid=%@&hirapasswd=%@", _garaponId, _password];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_loginURLString]];
 //    [request setHTTPMethod:@"POST"];
@@ -75,7 +76,7 @@
 
 - (void)queryGtvid:(NSString *)gtvId
 {
-    NSLog(@"queryGtvid: %@", gtvId);
+    WZYGaraponLogD(@"queryGtvid: %@", gtvId);
     
     NSString *replacedGtvId = [_cache objectForKey:gtvId];
     if (replacedGtvId.length > 0) {
@@ -99,7 +100,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"shouldStartLoadWithRequest: %@", request.URL);
+    WZYGaraponLogD(@"shouldStartLoadWithRequest: %@", request.URL);
     if ([request.URL.scheme compare:@"about"] == NSOrderedSame) {
 		return NO;
 	}
@@ -108,13 +109,13 @@
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    NSLog(@"webViewDidStartLoad: %@", webView.request.URL);
+    WZYGaraponLogD(@"webViewDidStartLoad: %@", webView.request.URL);
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
-    NSLog(@"webView.isLoading: %d", webView.isLoading);
+    WZYGaraponLogD(@"webViewDidFinishLoad: %@", webView.request.URL);
+    WZYGaraponLogD(@"webView.isLoading: %d", webView.isLoading);
     if (!webView.isLoading) {
         
         NSString *URLString = webView.request.URL.absoluteString;
@@ -124,12 +125,12 @@
             if (range.location != NSNotFound) {
                 originalGtvid = [URLString substringFromIndex:range.location + range.length];
             }
-//#if DEBUG
+//#if WZY_GARAPON_DEBUG
 //            NSString *program_table = [webView stringByEvaluatingJavaScriptFromString:@"jQuery('#program_table').html();"];
-//            NSLog(@"stringByEvaluatingJavaScriptFromString: %@", program_table);
+//            WZYGaraponLogD(@"stringByEvaluatingJavaScriptFromString: %@", program_table);
 //#endif
             NSString *script = [NSString stringWithFormat:@"jQuery('%@').attr('gtvid');", _gtvidSelector];
-            NSLog(@"stringByEvaluatingJavaScriptFromString: %@", script);
+            WZYGaraponLogD(@"stringByEvaluatingJavaScriptFromString: %@", script);
             NSString *gtvid = [webView stringByEvaluatingJavaScriptFromString:script];
             
             if (gtvid.length) {
@@ -165,7 +166,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"didFailLoadWithError:%@ %@", error.localizedDescription, webView.request.URL);
+    WZYGaraponLogD(@"didFailLoadWithError:%@ %@", error.localizedDescription, webView.request.URL);
 }
 
 + (NSString *)gtvidOfURLString:(NSString *)URLString
@@ -189,8 +190,4 @@
     return gtvid;
 }
 
-@end
-
-
-@implementation WZYGaraponTvSite (WebView)
 @end
