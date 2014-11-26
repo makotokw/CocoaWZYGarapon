@@ -59,14 +59,14 @@
 - (void)setHostAndPortWithAddressResponse:(NSDictionary *)response
 {
     WZYGaraponWrapDictionary *wrap = [WZYGaraponWrapDictionary wrapWithDictionary:response];
-    
+
     NSString *host = [wrap stringValueWithKey:@"ipaddr" defaultValue:nil];
     _privateIPAddress = [wrap stringValueWithKey:@"pipaddr" defaultValue:nil];
     _globalIPAddress = [wrap stringValueWithKey:@"gipaddr" defaultValue:nil];
     _globalPort = [wrap intgerValueWithKey:@"port" defaultValue:80];
-    
+
     NSInteger port = [host isEqualToString:_globalIPAddress] ? _globalPort : 80;
-    
+
     _host = host;
     _port = port;
     _port2 = [wrap intgerValueWithKey:@"port2" defaultValue:51935];
@@ -99,7 +99,7 @@
     if (_port == 80) {
         return [NSString stringWithFormat:@"http://%@%@", _host, path];
     }
-    return [NSString stringWithFormat:@"http://%@:%d%@", _host, _port, path];
+    return [NSString stringWithFormat:@"http://%@:%d%@", _host, (int)_port, path];
 }
 
 - (NSString *)apiURLStringWithPath:(NSString *)path
@@ -107,7 +107,7 @@
     if (_port == 80) {
         return [NSString stringWithFormat:@"http://%@/gapi/%@%@", _host, _apiVersion, path];
     }
-    return [NSString stringWithFormat:@"http://%@:%d/gapi/%@%@", _host, _port, _apiVersion, path];
+    return [NSString stringWithFormat:@"http://%@:%d/gapi/%@%@", _host, (int)_port, _apiVersion, path];
 }
 
 + (NSString *)formatDate:(NSTimeInterval)timestamp
@@ -187,25 +187,25 @@
                                 @"loginid": loginId,
                                 @"md5pswd": password
                                 };
-    
+
     WZYGaraponRequest *request = [self request];
     [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
-        
+
         if (!error) {
-            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];            
+            WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
             NSInteger result = [wrapResponse intgerValueWithKey:@"login" defaultValue:-1];
             if (!(status == 1 && result == 1)) {
                 error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponAuthLoginApi status:status userInfo:@{@"result":[NSNumber numberWithInteger:result]}];
             }
             _firmwareVersion = [wrapResponse stringValueWithKey:@"version" defaultValue:nil];
-            
+
             // store to re-login
             _sessionId = request.sessionId;
             _loginId = loginId;
             _password = password;
         }
-                
+
         if (completionHandler) {
             completionHandler(error);
         }
@@ -216,10 +216,10 @@
 {
     NSString *URLString = [self apiURLStringWithPath:@"/auth"];
     NSDictionary *parameter = @{@"type": @"logout"};
-    
+
     WZYGaraponRequest *request = [self request];
     [request post:URLString parameter:parameter completionHandler:^(NSDictionary *response, NSError *error) {
-        
+
         if (!error) {
             WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
@@ -230,7 +230,7 @@
                 _sessionId = nil;
             }
         }
-        
+
         if (completionHandler) {
             completionHandler(error);
         }
@@ -280,7 +280,7 @@
             if (status != 1) {
                 error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponSearchApi status:status userInfo:nil];
             }
-        }        
+        }
         if (completionHandler) {
             completionHandler(response, error);
         }
@@ -322,7 +322,7 @@
 {
     NSString *URLString = [self apiURLStringWithPath:@"/channel"];
     [self postRequestRetryIfSessionFailedWithURLString:URLString parameter:nil completionHandler:^(NSDictionary *response, NSError *error) {
-        
+
         if (!error) {
             WZYGaraponWrapDictionary *wrapResponse = [WZYGaraponWrapDictionary wrapWithDictionary:response];
             NSInteger status = [wrapResponse intgerValueWithKey:@"status" defaultValue:-1];
@@ -330,7 +330,7 @@
                 error = [[WZYGaraponError alloc] initWithGaraponTvV3Api:WZYGaraponChannelApi status:status userInfo:nil];
             }
         }
-        
+
         if (completionHandler) {
             completionHandler(response, error);
         }
