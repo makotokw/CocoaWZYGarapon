@@ -159,7 +159,7 @@
 
 - (NSString *)httpLiveStreamingURLStringWithId:(NSString *)gtvid
 {
-    NSString *path = [NSString stringWithFormat:@"/cgi-bin/play/m3u8.cgi?%@-%@", gtvid, _sessionId];
+    NSString *path = [NSString stringWithFormat:@"/cgi-bin/play/m3u8.cgi?%@-%@&dev_id=%@", gtvid, _sessionId, _devId];
     return [self URLStringWithPath:path];
 }
 
