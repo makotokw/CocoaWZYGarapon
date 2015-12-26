@@ -88,7 +88,7 @@
     
     _queryingGtvid = gtvId;
     
-    if (!_authedAt || abs(_authedAt.timeIntervalSinceNow) > 3600) {
+    if (!_authedAt || fabs(_authedAt.timeIntervalSinceNow) > 3600) {
         [self login];
         return;
     }
